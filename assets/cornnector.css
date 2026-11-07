@@ -397,3 +397,4 @@ h1 .cn,h2 .cn,h3 .cn,summary .cn{font-weight:300}
 #mitmachen .wish textarea,#mitmachen .wish input[name=n]{background:var(--bg-soft);border-color:var(--line);color:var(--head)}
 #mitmachen .wish textarea::placeholder{color:var(--muted)}
 #mitmachen .origin{margin-top:18px;color:var(--copy)}#mitmachen .origin a{color:var(--head);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:700px){.hero{padding-top:20px}.hero .btns,.hero .soon{display:none}.hero .grid{gap:0}.hero .grid>div:first-child{padding-bottom:36px!important}}

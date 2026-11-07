@@ -311,7 +311,7 @@ footer .fl{color:#fff;text-decoration:none;font-weight:600}footer .fl:hover{text
 @media (max-width:600px){
   #mehr .cards,#ausblick .cards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:calc(-1*max(20px,env(safe-area-inset-left,0px)));padding-inline:max(20px,env(safe-area-inset-left,0px));scroll-padding-inline:max(20px,env(safe-area-inset-left,0px));scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:4px}
   #mehr .cards::-webkit-scrollbar,#ausblick .cards::-webkit-scrollbar{display:none}
-  #mehr .cards > .card,#ausblick .cards > .card{flex:0 0 64%;scroll-snap-align:start;transform:none!important;opacity:1!important}
+  #mehr .cards > .card,#ausblick .cards > .card{flex:0 0 84%;scroll-snap-align:start;transform:none!important;opacity:1!important}
   .mcount{display:block;text-align:center;margin-top:18px;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
   .mcount b{color:var(--head)}
 }

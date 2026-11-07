@@ -333,7 +333,7 @@ footer .fl{color:#fff;text-decoration:none;font-weight:600}footer .fl:hover{text
 .ph.none{display:grid;place-items:center;background-color:#efeff3;color:#63616f}
 .ph.none>svg{width:48%;height:48%;opacity:.55}
 .logo img{height:20px;width:auto;display:block}footer .fwm{height:22px;width:auto;display:block}footer .flinks{display:flex;gap:20px;flex-wrap:wrap}footer .fbrand{display:flex;flex-direction:column;align-items:flex-start;gap:10px}footer .fby{font-size:13px}footer .in{align-items:center}
-.cn{font-weight:400;white-space:nowrap}.cn b{font-weight:900}
+.cn{font-weight:400;white-space:nowrap}.cn b{font-weight:900}h1 .cn b,h2 .cn b{letter-spacing:-.005em}
 h1 .cn,h2 .cn,h3 .cn,summary .cn{font-weight:300}
 /* iPhone mit Hub */
 .hero{padding-bottom:clamp(56px,8vw,104px)}.hero .grid{align-items:center}

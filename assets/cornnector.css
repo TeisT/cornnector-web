@@ -275,6 +275,7 @@ section:not(.dark) p a,section:not(.dark) .checks a{color:var(--head);text-decor
 #mitmachen .wish .nl{color:var(--head)}#mitmachen .wish .nl small{color:var(--muted);opacity:1}
 footer .fl{color:#fff;text-decoration:none;font-weight:600}footer .fl:hover{text-decoration:underline}
 .more-wrap{display:flex;justify-content:center;margin-top:32px}
+.more-wrap[hidden]{display:none}
 .more-wrap .btn{border:0;cursor:pointer;font-family:inherit;padding:0 22px}
 .vt{display:inline-flex;padding:3px;border-radius:999px;background:#e9e8ef;margin-bottom:14px}
 .vt button{display:inline-flex;align-items:center;gap:6px;border:0;background:none;font:inherit;font-size:13px;font-weight:600;color:#63616f;padding:6px 12px;border-radius:999px;cursor:pointer}
@@ -307,13 +308,16 @@ footer .fl{color:#fff;text-decoration:none;font-weight:600}footer .fl:hover{text
 .wl .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .wl .row2 > *{min-width:0}
 @media (max-width:560px){.wl .row2{grid-template-columns:1fr}}
-.mcount{display:none}
+.mdots{display:none}
 @media (max-width:600px){
   #mehr .cards,#ausblick .cards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:calc(-1*max(20px,env(safe-area-inset-left,0px)));padding-inline:max(20px,env(safe-area-inset-left,0px));scroll-padding-inline:max(20px,env(safe-area-inset-left,0px));scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:4px}
   #mehr .cards::-webkit-scrollbar,#ausblick .cards::-webkit-scrollbar{display:none}
   #mehr .cards > .card,#ausblick .cards > .card{flex:0 0 84%;scroll-snap-align:start;transform:none!important;opacity:1!important}
-  .mcount{display:block;text-align:center;margin-top:18px;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
-  .mcount b{color:var(--head)}
+  .mdots{display:flex;justify-content:center;margin-top:14px}
+  .mdots button{border:0;background:none;padding:8px 5px;cursor:pointer;line-height:0}
+  .mdots button::before{content:"";display:block;width:8px;height:8px;border-radius:50%;background:#c9c8d1;transition:background .2s}
+  .mdots button[aria-current="true"]::before{background:var(--head)}
+  .more-wrap{display:none}
 }
 /* Echte App-Screens (03.11.2026) */
 .iphone .scr-img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;border-radius:44px;background:#f5f5f7}

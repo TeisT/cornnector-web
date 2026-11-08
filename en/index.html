@@ -204,7 +204,7 @@
     <div class="card"><span class="tag">Animal profile</span><h3>Tap fields directly</h3><p>Change name, morph, sex, origin or feeding interval in the profile with a single tap. Everything can be undone after saving.</p></div>
     <div class="card"><span class="tag">History</span><h3>Swipe mistakes away</h3><p>Every feeding, shed, measurement and pairing is in the history with its date. Wrong entry? Swipe it left, gone.</p></div>
   </div>
-  <div class="mcount" aria-live="polite"><b>1</b> / <span>8</span></div>
+  <div class="mdots"></div>
   <div class="more-wrap"><button type="button" class="btn dark more" id="moreBtn">Show more features</button></div>
 </div></section>
 
@@ -216,7 +216,7 @@
   <h2>What’s coming. <span>Step by step.</span></h2>
   <p class="lead">The order is still open and depends on your wishes. We only announce dates once a feature is really done.</p>
   <div class="cards"><div class="card"><span class="tag">Planned</span><h3>Easy handover</h3><p>Simply export feedings and sheds for the new keeper, as PDF or spreadsheet.</p></div><div class="card"><span class="tag">Planned</span><h3>Animal passport via QR</h3><p>The new keeper scans a code on your phone, and the animal lands in their collection with genetics and history.</p></div><div class="card"><span class="tag">Planned</span><h3>Weight curve</h3><p>Growth per animal with feedings and sheds in the curve. A heads-up when an animal loses weight.</p></div><div class="card"><span class="tag">Planned</span><h3>Prey stock</h3><p>Enter once what’s in the freezer. Every feeding deducts automatically, and you see in time when to restock.</p></div><div class="card"><span class="tag">Planned</span><h3>Reptile show calendar</h3><p>The next reptile shows, not just near you: from Hamm via Hanover to Houten. Tap a date to add it to your calendar.</p></div><a class="card wishcard" href="#mitmachen"><span class="tag">Your wish</span><h3>Got more ideas?</h3><p>Tell us what Cornnector should do next.</p><span class="go">To the form →</span></a></div>
-  <div class="mcount" aria-live="polite"><b>1</b> / <span>6</span></div>
+  <div class="mdots"></div>
 </div></section>
 
 <!-- Mitgestalten -->
@@ -361,13 +361,15 @@ const WISH_NL='Newsletter: yes';
   // Mehr laden: neu eingeblendete Kacheln sofort zeigen
 })();
 
-// Mobil: Kacheln in „Mehr“ und „Ausblick“ als Wisch-Karussell mit Zähler
+// Mobil: Kacheln in „Mehr“ und „Ausblick“ als Wisch-Karussell mit Punkten (aktiv = schwarz, antippbar)
 (function(){const mob=matchMedia('(max-width:600px)');
-  document.querySelectorAll('#mehr .cards,#ausblick .cards').forEach(g=>{const cnt=g.parentElement.querySelector('.mcount');if(!cnt)return;
-    const cs=[...g.children];cnt.querySelector('span').textContent=cs.length;
-    const upd=()=>{if(!mob.matches)return;const w=cs[0].getBoundingClientRect().width+14;cnt.querySelector('b').textContent=Math.min(cs.length,Math.round(g.scrollLeft/w)+1);};
-    g.addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});
-    const prep=()=>{if(mob.matches)cs.forEach(c=>c.classList.add('vis'));};prep();mob.addEventListener('change',prep);});})();
+  document.querySelectorAll('#mehr .cards,#ausblick .cards').forEach(g=>{const dots=g.parentElement.querySelector('.mdots');if(!dots)return;
+    const cs=[...g.children],step=()=>cs[0].getBoundingClientRect().width+14;
+    const bs=cs.map((c,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',(i+1)+' / '+cs.length);
+      b.addEventListener('click',()=>g.scrollTo({left:i*step(),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));dots.appendChild(b);return b;});
+    const upd=()=>{if(!mob.matches)return;const end=g.scrollLeft>=g.scrollWidth-g.clientWidth-2,a=end?cs.length-1:Math.min(cs.length-1,Math.round(g.scrollLeft/step()));bs.forEach((b,i)=>b.setAttribute('aria-current',i===a));};
+    upd();g.addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});
+    const prep=()=>{if(mob.matches){cs.forEach(c=>c.classList.add('vis'));upd();}};prep();mob.addEventListener('change',prep);});})();
 </script>
 </body>
 </html>

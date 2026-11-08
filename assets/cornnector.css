@@ -413,4 +413,4 @@ h1 .cn,h2 .cn,h3 .cn,summary .cn{font-weight:300}
 #mitmachen .wish textarea::placeholder{color:var(--muted)}
 #mitmachen .origin{margin-top:18px;color:var(--copy)}#mitmachen .origin a{color:var(--head);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 @media (max-width:700px){.hero{padding-top:20px}.hero .btns,.hero .soon{display:none}.hero .grid{gap:0}.hero .grid>div:first-child{padding-bottom:36px!important}}
-#sponsoring{text-align:center;padding-block:clamp(56px,7vw,96px)}#sponsoring .lead{max-width:640px;margin-inline:auto}#sponsoring .btn{margin-top:28px}
+#kooperation{text-align:center;padding-block:clamp(56px,7vw,96px)}#kooperation .lead{max-width:640px;margin-inline:auto}#kooperation .btn{margin-top:28px}

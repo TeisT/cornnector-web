@@ -46,9 +46,10 @@ section{padding-block:clamp(72px,10vw,128px)}
 @media (max-width:980px){
   .links{display:flex;position:fixed;top:0;right:0;bottom:0;width:min(86vw,380px);margin:0;background:var(--bg);flex-direction:column;gap:0;padding:84px 28px calc(28px + env(safe-area-inset-bottom,0px));overflow-y:auto;z-index:60;box-shadow:-20px 0 60px rgba(23,22,29,.25);transform:translateX(100%);visibility:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s .35s}
   .links.open{transform:none;visibility:visible;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-  .links > a{display:flex;align-items:center;justify-content:space-between;padding:9px 0;font-size:26px;font-weight:500;letter-spacing:-.4px;color:var(--head)}
+  .links > a{display:flex;align-items:center;justify-content:space-between;padding:9px 0;font-size:26px;font-weight:300;letter-spacing:-.4px;color:var(--head)}
   .links > a::after{content:"";width:10px;height:10px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);margin-right:6px}
   .links > a:hover,.links > a.on{color:var(--head)}
+  .links > a.on{font-weight:700}
   .mclose{display:grid;place-items:center;position:absolute;top:10px;right:14px;width:44px;height:44px;border:0;background:none;color:var(--head);cursor:pointer}
   .mclose svg{width:24px;height:24px}
   .mpromo{display:block;margin-top:auto;padding-top:40px}

@@ -271,6 +271,10 @@ footer b{color:#fff;font-weight:900;font-size:18px}
 .wl button:hover{background:#e9e8ef}
 .wl .fine{font-size:13px;color:var(--ink-copy);line-height:1.5;margin:0}
 .wl .hp{position:absolute;left:-5000px}
+.wl .err{display:none;font-size:14px;font-weight:500;color:#ff9e98;line-height:1.4}.wl .err b{font-weight:inherit;display:none}
+.wl label.f.bad input{background:#fde4e2;box-shadow:inset 0 0 0 2px #e8756e}
+.wl label.f.bad input:focus-visible{outline-color:#e8756e}
+.wl label.f.bad .err{display:block}.wl label.f.bad1 .e1,.wl label.f.bad2 .e2{display:inline}
 .wl .ok{display:none;font-size:17px;color:#fff;text-align:center;margin-top:30px}
 .wl.sent form{display:none}.wl.sent .ok{display:block}
 /* Kommentare 26.10. */
@@ -399,6 +403,9 @@ h1 .cn,h2 .cn,h3 .cn,summary .cn{font-weight:300}
 .wish textarea::placeholder{color:#77748a}
 .wish .btn{border:0;cursor:pointer;justify-self:start;font-family:inherit}
 .wish .fine{font-size:13px;color:var(--ink-copy);margin:0}
+.wish .err{display:none;font-size:14px;font-weight:500;color:var(--late);line-height:1.4;margin-top:8px}.wish .err b{font-weight:inherit;display:none}
+#mitmachen .wish .f.bad textarea,#mitmachen .wish .f.bad input{background:var(--late-soft);border-color:var(--late);box-shadow:inset 0 0 0 1px var(--late)}
+.wish .f.bad .err{display:block}.wish .f.bad1 .e1,.wish .f.bad2 .e2{display:inline}
 .ac .id,.tile .b .id,.mini b{font-family:var(--ff);letter-spacing:0}.ac .id{font-size:11px}.tile .b .id{font-size:11px}.mini b{font-size:11px}
 .res.eggs > div{grid-template-columns:52px 1fr auto}
 .res .eg{font-family:var(--mono);font-weight:700;text-align:right;white-space:nowrap}.res .eg small{display:block;font-family:var(--ff);font-weight:400;font-size:9px;color:#63616f}

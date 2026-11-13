@@ -239,7 +239,7 @@
     <label class="f"><span>E-Mail <i class="req" aria-hidden="true">*</i></span><input type="email" name="e" autocomplete="email" required aria-describedby="wi-e-e"><small class="err" id="wi-e-e"><b class="e1">Bitte gib deine E-Mail-Adresse ein.</b><b class="e2">Bitte prüfe die E-Mail-Adresse.</b></small></label>
     <label class="nl"><input type="checkbox" name="nl" value="ja"><span>Newsletter abonnieren<small>Neuigkeiten zu Cornnector, nur wenn es wirklich etwas gibt.</small></span></label>
     <button class="btn dark" type="submit">Nachricht senden</button>
-    <p class="fine"><i class="req">*</i> Pflichtfeld. Deine Angaben verwenden wir nur, um dir zu antworten. Den Newsletter kannst du jederzeit abbestellen.</p>
+    <p class="fine"><i class="req">*</i> Pflichtfeld. Deine Angaben verwenden wir nur, um dir zu antworten. Für den Newsletter speichern wir deine Adresse bei MailerLite (Server in der EU), abbestellen geht jederzeit.</p>
   </form>
 </div></section>
 
@@ -276,7 +276,7 @@
   <img class="icon" src="assets/img/8d58b9c05d.png" alt="" width="120" height="120">
   <h2>Sei dabei, wenn es losgeht</h2>
   <p class="lead">Cornnector erscheint bald für iPhone und Android. Hinterlass deine Adresse, und du bekommst eine Mail, sobald die App in den Stores ist.</p>
-  <form id="wl" method="post" target="_blank" novalidate>
+  <form id="wl" novalidate>
     <div class="row2">
       <label class="f"><span>Name <i class="req" aria-hidden="true">*</i></span><input type="text" name="FNAME" autocomplete="given-name" required aria-describedby="wl-e-n"><small class="err" id="wl-e-n"><b class="e1">Bitte gib deinen Namen ein.</b></small></label>
       <label class="f"><span>E-Mail <i class="req" aria-hidden="true">*</i></span><input type="email" name="EMAIL" autocomplete="email" placeholder="du@beispiel.de" required aria-describedby="wl-e-m"><small class="err" id="wl-e-m"><b class="e1">Bitte gib deine E-Mail-Adresse ein.</b><b class="e2">Bitte prüfe die E-Mail-Adresse.</b></small></label>
@@ -284,7 +284,8 @@
     <label class="chk"><input type="checkbox" name="BETA" value="ja"><span>Ich möchte die Beta vorab testen<small>Ab Januar, für iPhone oder Android. Du bekommst dann eine Einladung.</small></span></label>
     <div class="hp" aria-hidden="true"><input type="text" name="b_hp" tabindex="-1" value="" autocomplete="off"></div>
     <button type="submit">Auf die Warteliste</button>
-    <p class="fine">Deine Angaben werden bei Mailchimp gespeichert und nur für die Ankündigung und, wenn gewünscht, die Beta-Einladung verwendet. Abmelden geht jederzeit. <i class="req">*</i> Pflichtfeld</p>
+    <p class="sendfail" role="alert" hidden>Das hat leider nicht geklappt. Bitte versuch es gleich noch einmal oder schreib uns an hey@cornnector.com.</p>
+    <p class="fine">Deine Angaben werden bei MailerLite (Server in der EU) gespeichert und nur für die Ankündigung und, wenn gewünscht, die Beta-Einladung verwendet. Abmelden geht jederzeit. <i class="req">*</i> Pflichtfeld</p>
   </form>
   <p class="ok" role="status">Danke! Bitte bestätige noch kurz die Mail, die gleich bei dir ankommt.</p>
 </div></section>
@@ -312,13 +313,18 @@ Object.keys(wfErr).forEach(k=>{wf[k].addEventListener('input',()=>wfRe(wf[k]));w
 wf.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(wf);
   let first=null;for(const k of Object.keys(wfErr)){const err=wfErr[k](wf[k].value.trim());wfMark(wf[k],err);if(err&&!first)first=wf[k];}
   if(first){first.focus();return;}
+  if(d.get('nl'))mlSend(ML_NL,{'fields[email]':d.get('e').trim(),'fields[name]':d.get('n').trim()}).catch(()=>{});
   const body=d.get('w')+'\n\n'+d.get('n')+'\n'+d.get('e')+(d.get('nl')?'\n'+WISH_NL:'');
   location.href='mailto:hey@cornnector.com?subject='+encodeURIComponent('Cornnector: '+d.get('t'))+'&body='+encodeURIComponent(body);});
 
-// Warteliste: Mailchimp-Formular-Adresse hier eintragen, sobald das Konto steht
-// (Mailchimp → Audience → Signup forms → Embedded forms → action-URL „…list-manage.com/subscribe/post?u=…&id=…“).
-// Das Honeypot-Feld heißt bei Mailchimp „b_<u>_<id>“ – den Namen von b_hp entsprechend anpassen.
-const MC_ACTION='';
+// MailerLite (Konto 2792531): schlichte Formulare ohne MailerLite-Skript, reCAPTCHA ist dort aus, Double-Opt-in an.
+// Warteliste: Gruppe Warteliste immer, Beta-Tester nur mit Häkchen („Interest groups“ im Formular eingeschaltet).
+const ML='https://assets.mailerlite.com/jsonp/2792531/forms/';
+const ML_WL=ML+'204013334935110721/subscribe',ML_NL=ML+'204013405630105356/subscribe';
+const ML_G_WL='204013297096198131',ML_G_BETA='204013307789575267';
+function mlSend(url,fields,groups){const b=new URLSearchParams();Object.entries(fields).forEach(([k,v])=>b.append(k,v));
+  (groups||[]).forEach(g=>b.append('groups[]',g));b.append('ml-submit','1');b.append('anticsrf','true');
+  return fetch(url,{method:'POST',body:b}).then(r=>r.json()).then(j=>{if(!j||!j.success)throw new Error('MailerLite');return j;});}
 const wl=document.getElementById('wl');
 // Pflichtfelder selbst prüfen: Feld hellrot, eigener Hinweis darunter (kein Browser-Standard)
 const wlMail=/^[^@\s]+@[^@\s]+\.[^@\s]+$/;
@@ -331,12 +337,14 @@ function wlCheck(focus){let first=null;for(const k of ['FNAME','EMAIL']){const i
 wl.addEventListener('submit',e=>{
   const n=wl.FNAME.value.trim(),m=wl.EMAIL.value.trim();
   if(!wlCheck(true)){e.preventDefault();return;}
-  if(MC_ACTION){wl.action=MC_ACTION;setTimeout(()=>wl.closest('.wl').classList.add('sent'),50);return;}
   e.preventDefault();
-  const beta=wl.BETA.checked?WL_TXT.yes:WL_TXT.no;
-  location.href='mailto:hey@cornnector.com?subject='+encodeURIComponent(WL_TXT.subj)+'&body='+encodeURIComponent(WL_TXT.body.replace('{n}',n).replace('{m}',m).replace('{b}',beta));
+  const box=wl.closest('.wl'),btn=wl.querySelector('button'),fail=wl.querySelector('.sendfail');
+  if(wl.b_hp.value){box.classList.add('sent');return;}
+  fail.hidden=true;btn.disabled=true;
+  mlSend(ML_WL,{'fields[email]':m,'fields[name]':n},wl.BETA.checked?[ML_G_WL,ML_G_BETA]:[ML_G_WL])
+    .then(()=>box.classList.add('sent'))
+    .catch(()=>{fail.hidden=false;btn.disabled=false;});
 });
-const WL_TXT={subj:'Cornnector Warteliste',body:'Name: {n}\nE-Mail: {m}\nBeta testen: {b}\n',yes:'ja',no:'nein'};
 
 // Mehr: 3 Kacheln, dann je 3 weitere
 (function(){const g=document.querySelector('#mehr .cards'),b=document.getElementById('moreBtn');if(!g||!b)return;

@@ -271,6 +271,8 @@ footer b{color:#fff;font-weight:900;font-size:18px}
 .wl button:hover{background:#e9e8ef}
 .wl .fine{font-size:13px;color:var(--ink-copy);line-height:1.5;margin:0}
 .wl .hp{position:absolute;left:-5000px}
+.wl .sendfail{margin:0;font-size:14px;font-weight:500;color:#ff9e98;line-height:1.4}
+.wl button[disabled]{opacity:.6;cursor:progress}
 .wl .err{display:none;font-size:14px;font-weight:500;color:#ff9e98;line-height:1.4}.wl .err b{font-weight:inherit;display:none}
 .wl label.f.bad input{background:#fde4e2;box-shadow:inset 0 0 0 2px #e8756e}
 .wl label.f.bad input:focus-visible{outline-color:#e8756e}

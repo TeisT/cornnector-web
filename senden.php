@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 const EMPFAENGER = 'hey@cornnector.com';
 // Absender muss zur Domain des Servers passen, sonst landen Mails im Spam.
-const ABSENDER = 'website@cornnector.com';
+const ABSENDER = 'mail@cornnector.com';
 const THEMEN = ['Neue Funktion', 'Verbesserung', 'Fehler', 'Sonstiges', 'New feature', 'Improvement', 'Bug', 'Other'];
 
 header('Content-Type: application/json; charset=utf-8');

@@ -78,7 +78,7 @@ section{padding-block:clamp(72px,10vw,128px)}
 .btn.light{background:#fff;color:var(--ink)}
 .btn.ghost{background:var(--ink-2);color:#fff}
 .hero-shot{align-self:end;margin-bottom:-2px}
-@media (max-width:900px){.hero .grid{grid-template-columns:1fr}.hero-shot{max-width:420px;margin-inline:auto}}
+@media (max-width:700px){.hero .grid{grid-template-columns:1fr}.hero-shot{max-width:420px;margin-inline:auto}}
 
 /* Split */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:center}
@@ -423,6 +423,8 @@ h1 .cn,h2 .cn,h3 .cn,summary .cn{font-weight:300}
 #mitmachen .wish textarea,#mitmachen .wish input[name=n]{background:var(--bg-soft);border-color:var(--line);color:var(--head)}
 #mitmachen .wish textarea::placeholder{color:var(--muted)}
 #mitmachen .origin{margin-top:18px;color:var(--copy)}#mitmachen .origin a{color:var(--head);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+/* Tablet hochkant: Text und iPhone nebeneinander, iPhone etwas kleiner */
+@media (min-width:701px) and (max-width:900px){.hero .grid{grid-template-columns:1fr auto;gap:clamp(24px,4vw,40px)}.hero .iphone{width:290px}.hero h1{font-size:clamp(40px,6.2vw,54px)}}
 @media (max-width:700px){.hero{padding-top:20px}.hero .btns,.hero .soon{display:none}.hero .grid{gap:0}.hero .grid>div:first-child{padding-bottom:36px!important}}
 #kooperation{text-align:center;padding-block:clamp(56px,7vw,96px)}#kooperation .lead{max-width:640px;margin-inline:auto}#kooperation .btn{margin-top:28px}
 #kooperation .plogos{--pg:clamp(40px,5vw,56px);display:flex;justify-content:center;align-items:center;gap:clamp(36px,6vw,80px);margin-block:calc(var(--pg) - 8px) var(--pg)}#kooperation .plogos + .btn{margin-top:0}#kooperation .plogo{display:flex;align-items:center;justify-content:center;gap:12px;font-weight:800;font-size:clamp(24px,2.6vw,30px);letter-spacing:-.5px;white-space:nowrap;color:var(--head);opacity:.2;animation:plogo 7.5s ease-in-out infinite}#kooperation .plogo svg{width:1.45em;height:1.45em;flex:none}#kooperation .plogo:nth-child(2){animation-delay:2.5s}#kooperation .plogo:nth-child(3){animation-delay:5s}@keyframes plogo{0%,40%,100%{opacity:.2}7%,33%{opacity:1}}@media (max-width:600px){#kooperation .plogos{position:relative;overflow:hidden;height:52px;margin-inline:calc(-1*var(--gut))}#kooperation .plogo{position:absolute;inset:0;opacity:1;font-size:26px;animation:plogo-m 7.5s ease-in-out infinite backwards}#kooperation .plogo:nth-child(2){animation-delay:2.5s}#kooperation .plogo:nth-child(3){animation-delay:5s}}@keyframes plogo-m{0%{transform:translateX(100%)}7%,33.3%{transform:translateX(0)}40.3%,100%{transform:translateX(-100%)}}@media (max-width:600px) and (prefers-reduced-motion:reduce){#kooperation .plogo:not(:first-child){display:none}}

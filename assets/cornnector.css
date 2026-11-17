@@ -339,6 +339,17 @@ footer .fl{color:#fff;text-decoration:none;font-weight:600}footer .fl:hover{text
 }
 /* Echte App-Screens (03.11.2026) */
 .iphone .scr-img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;border-radius:44px;background:#f5f5f7}
+/* Hub-Screenshot animiert: Ebenen in Bildkoordinaten (640×1391), Bild füllt die Höhe wie object-fit:cover */
+.iphone .scr-box{height:100%;border-radius:44px;overflow:hidden;position:relative;background:#f5f5f7}
+.iphone .scr-art{position:absolute;top:0;left:50%;height:100%;aspect-ratio:640/1391;transform:translateX(-50%)}
+.iphone .scr-art .scr-img{border-radius:0}
+.hub-bar{position:absolute;left:calc(47/640*100%);top:calc(671/1391*100%);width:calc(459/640*100%);height:calc(14/1391*100%);background:#fff;display:none}
+.hub-bar::before{content:"";position:absolute;left:calc(2/459*100%);right:0;top:calc(2.7/14*100%);bottom:calc(1.7/14*100%);background:#eff0f3;border-radius:9px 0 0 9px}
+.hub-bar i{position:absolute;left:calc(2/459*100%);top:calc(2.5/14*100%);bottom:calc(1.5/14*100%);width:calc(455/459*100%);background:#0f0f0f;border-radius:9px;animation:hub-bar 1.6s cubic-bezier(.2,.8,.2,1) .5s both}
+.hub-late{position:absolute;left:calc(539/640*100%);top:calc(881/1391*100%);width:calc(57/640*100%);aspect-ratio:1;background:radial-gradient(closest-side,transparent 70%,#fff 73% 97%,transparent 100%);display:none;animation:hub-late 1.2s ease-in-out 2.1s infinite;opacity:0}
+@keyframes hub-bar{from{width:0}}
+@keyframes hub-late{50%{opacity:.6}}
+@media (prefers-reduced-motion:no-preference){.hub-bar,.hub-late{display:block}}
 .shot{margin:0;display:grid;gap:12px;justify-items:center}
 .shot img{display:block;width:min(270px,70vw);height:auto;aspect-ratio:640/1391;border-radius:38px;border:9px solid #000;box-shadow:0 0 0 2px #3a3846,0 30px 60px rgba(23,22,29,.22);background:#f5f5f7}
 .shot.big img{width:min(330px,78vw)}

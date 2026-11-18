@@ -352,6 +352,11 @@ footer .fl{color:#fff;text-decoration:none;font-weight:600}footer .fl:hover{text
 @keyframes hub-bar{from{width:0}}
 @keyframes hub-late{50%{opacity:.6}}
 @media (prefers-reduced-motion:no-preference){.hub-bar,.hub-late{display:block}}
+/* Foto hinter dem iPhone: am iPhone verankert (Maße aus der 1440er-Vorlage, iPhone 340 px breit, 104 px unter Bühnenkante) */
+.hero{isolation:isolate}
+.hero-photo img{position:absolute;z-index:-1;top:0;margin-top:calc(-104/340*100%);left:calc(-876/340*100%);width:calc(1440/340*100%);max-width:none;height:auto;pointer-events:none}
+@media (min-width:1441px){.hero-photo img{left:calc(-1403/340*100%);width:calc(2679/340*100%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%);mask-image:linear-gradient(90deg,transparent,#000 12%)}}
+@media (max-width:700px){.hero-photo img{left:calc(-223/340*100%);width:calc(800/340*100%);-webkit-mask-image:linear-gradient(transparent,#000 14%);mask-image:linear-gradient(transparent,#000 14%)}}
 .shot{margin:0;display:grid;gap:12px;justify-items:center}
 .shot img{display:block;width:min(270px,70vw);height:auto;aspect-ratio:640/1391;border-radius:38px;border:9px solid #000;box-shadow:0 0 0 2px #3a3846,0 30px 60px rgba(23,22,29,.22);background:#f5f5f7}
 .shot.big img{width:min(330px,78vw)}

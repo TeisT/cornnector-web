@@ -356,7 +356,9 @@ footer .fl{color:#fff;text-decoration:none;font-weight:600}footer .fl:hover{text
    zwischen zwei Frames gilt das Foto des nächstgrößeren. Bis 900 px füllt es die Bühne von unten (bis 430 px Foto 390, bis 700 px Foto 700). */
 .hero{isolation:isolate}
 .hero-photo img{position:absolute;z-index:-1;top:0;margin-top:calc(-109/340*100%);left:calc(-876/340*100%);width:calc(1440/340*100%);max-width:none;height:auto;pointer-events:none}
-@media (min-width:1441px){.hero-photo img{left:calc(-1109/340*100%);width:calc(2471/340*100%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%);mask-image:linear-gradient(90deg,transparent,#000 12%)}}
+/* Ab 901 px: Falls die Bühne höher ist als das Foto (z. B. Safari auf dem iPad), läuft das Foto unten weich in die Bodenfarbe aus */
+@media (min-width:901px){.hero{background:linear-gradient(90deg,#14131a,#1c1b22 55%,#34333a)}.hero-photo img{-webkit-mask-image:linear-gradient(#000 calc(100% - 60px),transparent);mask-image:linear-gradient(#000 calc(100% - 60px),transparent)}}
+@media (min-width:1441px){.hero-photo img{left:calc(-1109/340*100%);width:calc(2471/340*100%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%),linear-gradient(#000 calc(100% - 60px),transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 12%),linear-gradient(#000 calc(100% - 60px),transparent);mask-composite:intersect}}
 @media (min-width:1025px) and (max-width:1280px){.hero-photo img{left:calc(-796/340*100%);margin-top:calc(-107/340*100%);width:calc(1280/340*100%)}}
 @media (min-width:901px) and (max-width:1024px){.hero-photo img{left:calc(-608/340*100%);margin-top:calc(-86/340*100%);width:calc(1024/340*100%)}}
 @media (max-width:900px){.hero{position:relative}.hero .iphone{position:static}.hero-photo img{inset:0;margin:0;width:100%;height:100%;object-fit:cover;object-position:right bottom}}

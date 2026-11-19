@@ -379,7 +379,7 @@ footer .fl{color:#fff;text-decoration:none;font-weight:600}footer .fl:hover{text
 :focus-visible{outline:3px solid var(--shed);outline-offset:2px}
 .ph.none{display:grid;place-items:center;background-color:#efeff3;color:#63616f}
 .ph.none>svg{width:48%;height:48%;opacity:.55}
-.logo svg{height:20px;width:auto;display:block}footer .fwm{height:22px;width:auto;display:block}footer .flinks{display:flex;gap:20px;flex-wrap:wrap}footer .fbrand{display:flex;flex-direction:column;align-items:flex-start;gap:10px}footer .fby{font-size:13px}footer .in{align-items:center}
+.logo svg{height:20px;width:auto;display:block}footer .fwm{height:22px;width:auto;display:block}footer .flinks{display:flex;gap:20px;flex-wrap:wrap}footer .fbrand{display:flex;flex-direction:column;align-items:flex-start;gap:10px}footer .fby{font-size:13px}footer .in{align-items:center}footer .flinks{align-items:center}footer .fsocs{display:flex;gap:6px;margin-left:4px}footer .fsoc{display:flex;align-items:center;justify-content:center;width:36px;height:36px;margin:-7px 0;border-radius:8px;transition:opacity .2s}footer .fsoc:hover{opacity:.7}footer .fsoc svg{display:block}
 .cn{font-weight:400;white-space:nowrap}.cn b{font-weight:900}h1 .cn b,h2 .cn b{letter-spacing:-.005em}
 h1 .cn,h2 .cn,h3 .cn,summary .cn{font-weight:300}
 /* iPhone mit Hub */

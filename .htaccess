@@ -1,0 +1,16 @@
+# Erzeugt von tools/export-web.py – nicht von Hand ändern
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/javascript application/json image/svg+xml
+</IfModule>
+<IfModule mod_headers.c>
+  Header set Cache-Control "no-cache"
+  <FilesMatch "\.(css|js|png|jpe?g|webp|gif|svg|ico|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "^(og-image\.jpg|robots\.txt|sitemap\.xml)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+  <FilesMatch "\.php$">
+    Header unset Cache-Control
+  </FilesMatch>
+</IfModule>

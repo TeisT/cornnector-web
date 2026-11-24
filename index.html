@@ -47,7 +47,7 @@
   </div>
   <div class="mscrim" id="mscrim"></div>
   <div class="lang" role="group" aria-label="Sprache"><a href="./" hreflang="de" aria-current="true">DE</a><span>|</span><a href="en/" hreflang="en" lang="en">EN</a></div>
-  <a class="cta" href="#vormerken" data-beta>Beta-Tester werden</a>
+  <a class="cta" href="#beta" data-beta>Beta-Tester werden</a>
   <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 </div></nav>
 
@@ -59,7 +59,7 @@
     <h1><span class="lt">Deine</span> Nattern. <span>Im <span class="cn"><b>Corn</b>nector</span> verbunden.</span></h1>
     <p class="lead">Cornnector dokumentiert Fütterungen, Häutungen, Verpaarungen und Gelege – inklusive genetischer Ergebnisse. Alle Informationen digital. Direkt dort, wo du sie brauchst.</p>
     <p class="free">Bald kostenlos für iPhone und Android</p>
-    <div class="btns"><a class="btn light wl-m" href="#vormerken" data-beta>Beta-Tester werden</a><a class="btn line" href="#vormerken">Auf die Merkliste</a></div>
+    <div class="btns"><a class="btn light wl-m" href="#beta" data-beta>Beta-Tester werden</a><a class="btn line" href="#vormerken">Auf die Merkliste</a></div>
   </div>
   <div class="hero-shot"><div class="iphone" role="img" aria-label="Die Kornnatter-App Cornnector auf dem iPhone: der Hub mit den heute fälligen Fütterungen">
     <picture class="hero-photo"><source media="(max-width:430px)" srcset="assets/img/hero-390.jpg?v=bfcae047 1x, assets/img/hero-390@2x.jpg?v=2cab6b69 2x"><source media="(max-width:700px)" srcset="assets/img/hero-700.jpg?v=38a627fa 1x, assets/img/hero-700@2x.jpg?v=b11c8f74 2x"><source media="(max-width:768px)" srcset="assets/img/hero-768.jpg?v=11e37203 1x, assets/img/hero-768@2x.jpg?v=f951c977 2x"><source media="(max-width:900px)" srcset="assets/img/hero-820.jpg?v=0de168e0 1x, assets/img/hero-820@2x.jpg?v=f01f7d84 2x"><source media="(max-width:1024px)" srcset="assets/img/hero-1024.jpg?v=c9457e7d 1x, assets/img/hero-1024@2x.jpg?v=f13a4868 2x"><source media="(max-width:1280px)" srcset="assets/img/hero-1280.jpg?v=31a64adf 1x, assets/img/hero-1280@2x.jpg?v=8a7829bb 2x"><source media="(min-width:1441px)" srcset="assets/img/hero-breit.jpg?v=f7213252 1x, assets/img/hero-breit@2x.jpg?v=442c9a98 2x"><img src="assets/img/hero-1440.jpg?v=e1de4558" srcset="assets/img/hero-1440.jpg?v=e1de4558 1x, assets/img/hero-1440@2x.jpg?v=e6878d9d 2x" alt="" decoding="async" fetchpriority="low"></picture>
@@ -298,7 +298,7 @@
 </div></section>
 
 <!-- Warteliste -->
-<section class="dark wl" id="vormerken"><div class="in">
+<section class="dark wl" id="vormerken"><div class="in"><span id="beta" aria-hidden="true"></span>
   <img class="icon" src="assets/img/8d58b9c05d.png?v=8d58b9c0" alt="" width="120" height="120">
   <h2>Sei dabei, wenn es losgeht</h2>
   <p class="lead">Cornnector erscheint bald für iPhone und Android. Hinterlass deine Adresse, und du bekommst eine Mail, sobald die App in den Stores ist.</p>
@@ -333,7 +333,10 @@ l.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false);});
 const secs=[...document.querySelectorAll('section[id]')],as=[...l.querySelectorAll(':scope > a')];
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const k=e.target.dataset.nav||e.target.id;as.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+k));}});},{rootMargin:'-45% 0px -50% 0px'});
 secs.forEach(s=>io.observe(s));
-document.querySelectorAll('[data-beta]').forEach(a=>a.addEventListener('click',()=>{document.getElementById('wl-beta').checked=true;}));
+// #beta (auch als Direktlink www.cornnector.com/#beta): zum Formular, Beta-Häkchen setzen
+const betaOn=()=>{document.getElementById('wl-beta').checked=true;};
+if(location.hash==='#beta')betaOn();addEventListener('hashchange',()=>{if(location.hash==='#beta')betaOn();});
+document.querySelectorAll('[data-beta]').forEach(a=>a.addEventListener('click',betaOn));
 const wf=document.getElementById('wish');
 // Pflichtfelder selbst prüfen: Feld hellrot, eigener Hinweis darunter (kein Browser-Standard)
 const wfErr={w:v=>v?0:1,n:v=>v?0:1,e:v=>!v?1:(/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)?0:2)};

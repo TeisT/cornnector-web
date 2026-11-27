@@ -237,7 +237,7 @@ footer b{color:#fff;font-weight:900;font-size:18px}
 .offset{transform:translateX(18%);max-width:82%}
 @media (max-width:520px){.offset{transform:none;max-width:100%}}
 /* Tier-Menü (Animation) */
-.menu-demo{position:relative;height:580px;overflow:hidden;border-radius:22px;background:#f5f5f7;border:1px solid #e5e7eb}
+.menu-demo{position:relative;height:620px;overflow:hidden;border-radius:22px;background:#f5f5f7;border:1px solid #e5e7eb}
 .menu-demo .card-wrap{position:absolute;left:16px;right:16px;top:18px;animation:md-press 9s ease-in-out infinite}
 .menu-demo .card-wrap.rest{animation:none}
 .menu-demo .scrim{position:absolute;inset:0;background:rgba(23,22,29,.38);animation:md-scrim 9s ease-in-out infinite}
